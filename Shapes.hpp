@@ -44,9 +44,8 @@ public:
 
     Rectangle(double length_, double width_) : length(length_), width(width_) {}
 
-    //there's no override. Does this cause problems?
+    //there's no virtual or override. Does this cause problems?
     double get_area() const { return length * width; }
-
     double get_perimeter() const { return 2 * (length + width); }
 
 private:
@@ -58,7 +57,7 @@ private:
 class Square : public Rectangle {
 public:
     //default constructor that calls default constructor
-    //for rectangle's member varaibles
+    //to initialize rectangle's member varaibles
     Square() : Rectangle() {}
 
     //makes rectangle's length and width equal to side
@@ -74,9 +73,22 @@ public:
 };
 
 
-class Random : public Rectangle {
+//everything in NeagtiveSquare is correct
+class NegativeSquare : public Square {
 public:
-    Random() : junk(33), Rectangle() {}
+    NegativeSquare() : Square(), scalar(-1) {}
+    NegativeSquare(double side_length) : Square(side_length), scalar(-1) {} 
+
+    virtual double get_area() const override { return Square::get_area() * scalar; }
+    virtual double get_perimeter() const override {return Square::get_perimeter() * scalar; }
+private:
+    double scalar;
+};
+
+
+class StupidRectangle : public Rectangle {
+public:
+    StupidRectangle() : junk(33), Rectangle() {}
 
     double get_area() const {
         std::cout << "RANDOM AREA ";
@@ -87,6 +99,7 @@ public:
         std::cout << "RANDOM PERIMETER ";
         return 543.21;
     }
+
 private:
     int junk;
 };

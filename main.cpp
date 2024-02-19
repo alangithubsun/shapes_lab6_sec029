@@ -11,6 +11,8 @@ using namespace std;
 
 //INSTRUCTIONS: There are three errors in Shapes.hpp that prevent
 //              the program from compiling. Find them and fix them.
+//              Do not alter any of the private member variables or
+//              the order they're declared in (hint hint)
 
 
 /* -------------------------------------------------------------------------- */
@@ -30,15 +32,13 @@ int main() {
     //now cout always prints 2 decimal places
     cout << fixed << setprecision(2);
 
-    //ask students why we can't do this
     //Shape bad_shape; //why is this not compiling??
 
-    Shape* s = new Circle(3); //why doesn't this work?
+    Shape* s = new Circle(3);
     cout << "Circle Area: " << s->get_area() << endl;
     cout << "Circle Perimeter: " << s->get_perimeter() << endl;
     cout << endl;
     delete s;
-    s = nullptr;
 
     Rectangle* r = new Square(10);
     cout << "Square Area: " << r->get_area() << endl;
@@ -49,11 +49,15 @@ int main() {
     //what will print? We never put "virtual" in front of
     //the Rectangle functions, so will this run the Rectangle
     //version or the Random versions?
-    r = new Random();   //"delete r" deletes the object at r, not the ptr
+    r = new StupidRectangle();   //"delete r" deletes the object at r, not the ptr
     cout << "Random Area: " << r->get_area() << endl;
     cout << "Random Perimeter: " << r->get_perimeter() << endl;
     cout << endl;
     delete r;
+
+    s = new NegativeSquare(8);
+    print_shape("Negative Square", *s);
+    delete s;
 
     Rectangle rect(2, 3);
     print_shape("Rectangle", rect);
