@@ -8,9 +8,6 @@
 
 static const double pi = 3.1415926535;
 
-
-//TODO: Find the three errors that prevent this code from COMPILING
-
 class Shape {
 public:
     //returns area of shape
@@ -62,15 +59,16 @@ public:
     //for rectangle's member varaibles
     Square() : Rectangle() {}
 
-    //Makes rectangle's length and width equal to side
+    //makes rectangle's length and width equal to side
     Square(double side) : Rectangle(side, side) {}
 
-    //Now we can juse call the functions from the
+    //now we can juse call the functions from the
     //Rectangle class to reduce code duplication
     double get_area() const { return Rectangle::get_area(); }
     double get_perimeter() const { return Rectangle::get_perimeter(); }
 
-    //note that square does NOT have any private member variables itself
+    //note that square does NOT have any private member 
+    //variables itself. Do we need any for square?
 };
 
 
