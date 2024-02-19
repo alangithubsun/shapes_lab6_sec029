@@ -19,6 +19,7 @@ public:
     virtual ~Shape() {} //needed to delete shape objects through pointers
 };
 
+
 class Circle : Shape {
 public:
     //default constructor, sets radius to 0
@@ -53,6 +54,7 @@ private:
     double width;
 };
 
+
 class Square : public Rectangle {
 public:
     //default constructor that calls default constructor
@@ -77,12 +79,12 @@ public:
     Random() : junk(33), Rectangle() {}
 
     double get_area() const {
-        std::cout << "RANDOM AREA\n";
+        std::cout << "RANDOM AREA ";
         return 123.45;
     }
 
     double get_perimeter() const {
-        std::cout << "RANDOM PERIMETER\n";
+        std::cout << "RANDOM PERIMETER ";
         return 543.21;
     }
 private:
